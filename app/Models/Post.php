@@ -13,4 +13,9 @@ class Post extends Model
     use SoftDeletes;
 
     protected $fillable = ['title', 'content'];
+
+    // il nostro post ha un solo type
+    public function type() {
+        return $this->belongsTo(Type::class);
+    }
 }

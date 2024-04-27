@@ -10,6 +10,12 @@
 
   <h1>{{$post->title}}</h1>
 
+  {{-- 
+    Nullsafe operator: possibilità di accedere ad una variabile di un oggetto che non sappiamo se esista o no
+    utilissimo per le relazioni con tabelle che possono anche essere nulle
+  --}}
+  <small>{{ $post->type?->title }}</small>
+
   <p>
       {{$post->content}}
   </p>
