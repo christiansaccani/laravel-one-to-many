@@ -32,7 +32,7 @@
       </table>
 
 
-      <a href="{{route('admin.posts.create')}}" class="btn btn-primary">Aggiungi un post</a>
+      <a href="{{route('admin.posts.create')}}" class="btn btn-secondary">Aggiungi un post</a>
 
 </div>
 

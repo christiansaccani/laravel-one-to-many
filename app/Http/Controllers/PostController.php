@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Type;
+
 use App\Http\Requests\StorePostRequest;
-use App\Http\Requests\UpdatePostRequest;
 use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
@@ -15,6 +16,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
+
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -23,7 +25,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $types = Type::all();
+
+        return view('admin.posts.create', compact('types'));
     }
 
     /**
@@ -31,6 +35,8 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
+        // dd($request);
+
         // validiamo i nostri parametri
         $request->validated();
 
@@ -65,7 +71,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('post'));
+        $types = Type::all();
+
+        return view('admin.posts.edit', compact('post', 'types'));
     }
 
     /**

@@ -24,6 +24,7 @@ class StorePostRequest extends FormRequest
     $rules = [
         'content' => 'required',
         'cover_image' => 'file|max:1024|nullable|mimes:jpg,bmp,png',
+        'type_id' => 'nullable|exists:types,id',
     ];
 
     // Se stiamo modificando un record, escludi il titolo corrente dalla regola di unicità
@@ -48,6 +49,8 @@ class StorePostRequest extends FormRequest
 
             'cover_image.mimes' => "Il file deve essere un'immagine",
             'cover_image.max' => "La dimensione del file non deve superare i 1024 KB",
+
+            'type_id.exists' => 'Mongolo'
         ];
     }
 }

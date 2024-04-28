@@ -42,7 +42,22 @@
             @enderror
         </div>
 
-        <button class="btn btn-primary">Modifica</button>
+        <div class="mb-4">
+            <label class="mb-2" for="type_id">Type</label>
+
+            <select class="form-select" name="type_id" id="type_id">
+                
+                <option value=""></option>
+                @foreach ($types as $type)
+                <option value="{{$type->id}}" {{ $type->id == old('type_id', $post->type ? $post->type->id : '') ? 'selected' : '' }}>
+                    {{ $type->title }}
+                </option>
+                @endforeach
+
+            </select>
+        </div>
+
+        <button class="btn btn-success">Modifica</button>
     
     </form>
 
